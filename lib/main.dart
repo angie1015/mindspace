@@ -13,7 +13,7 @@ void main() {
   runApp(MaterialApp(
     theme: ThemeData(fontFamily: 'Nunito'),
     debugShowCheckedModeBanner: false,
-    home: Preliminary(),
+    home: HomeRoute(),
   ));
 }
 
