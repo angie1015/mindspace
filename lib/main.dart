@@ -15,10 +15,19 @@ void main() {
 }
 
 class HomeRoute extends StatelessWidget {
-  row(s1, s2, context) {
+  row(s1, s2, s3, s4, context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [soundBtn(s1, context), soundBtn(s2, context),],
+      children: [
+        SizedBox(width: 20),
+        soundBtn(s1, context),
+        SizedBox(width: 20),
+        soundBtn(s2, context),
+        SizedBox(width: 20),
+        soundBtn(s3, context),
+        SizedBox(width: 20),
+        soundBtn(s4, context),
+        SizedBox(width: 20),],
     );
   }
 
@@ -27,7 +36,10 @@ class HomeRoute extends StatelessWidget {
       onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => PlayRoute(sound: sound))); },
       child: Column(
         children: [
-          Image.asset('assets/icons/$sound.png'),
+          Image.asset('assets/icons/$sound.png',
+          height: 140,
+              width: 120,
+          ),
           Text(sound.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 3.0))
         ],
       ),
@@ -44,14 +56,38 @@ class HomeRoute extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/bkgnd_2.jpg'), fit: BoxFit.cover)),
-        child: Stack(
-          children: [
-            //Positioned(top: 0, left: 0, child: Image.asset(img + 'bkgnd_2.jpg')),
-            Positioned(top: 115, width: width, child: Center(child: Text('SOLACE', style: title))),
-            Positioned(top: 250, width: width, child: Column(children: [row('rain', 'forest', context), row('sunset', 'ocean', context)],)
-            ),
-          ],
-        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height:750),
+              Text('MINDSPACE', style: title),
+              SizedBox(height:30),
+              Text('Music',
+                  style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 1.0)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: row('elven', 'memories', 'moment', 'space', context),
+              ),
+              SizedBox(height:30),
+             Text('Podcasts',
+                  style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 1.0)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: row('rain', 'forest', 'sunset', 'ocean', context),
+              ),
+              SizedBox(height:30),
+              Text('Audiobooks',
+                  style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 1.0)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: row('rain', 'forest', 'sunset', 'ocean', context),
+              ),
+              SizedBox(height:100),
+            ],
+          ),
+        )
       ),
 
       /*body: Stack(
