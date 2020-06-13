@@ -2,6 +2,7 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:google_fonts/google_fonts.dart';
 
 const img = 'assets/images/';
 const title = TextStyle(color: Colors.white, fontSize: 36, letterSpacing: 13.0, fontWeight: FontWeight.w600);
@@ -61,30 +62,35 @@ class HomeRoute extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height:750),
+              SizedBox(height:720),
+
               Text('MINDSPACE', style: title),
-              SizedBox(height:30),
+
+              SizedBox(height:50),
               Text('Music',
-                  style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 1.0)),
+                  style: GoogleFonts.pacifico(color: Colors.white, fontSize: 36,)
+                //  TextStyle(color: Colors.white, fontSize: 26, letterSpacing: 1.0, fontFamily: )
+        ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: row('elven', 'memories', 'moment', 'space', context),
               ),
               SizedBox(height:30),
              Text('Podcasts',
-                  style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 1.0)),
+               style: GoogleFonts.pacifico(color: Colors.white, fontSize: 36,)),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: row('rain', 'forest', 'sunset', 'ocean', context),
+                child: row('relax', 'breathe', 'yoga', 'mountain', context),
               ),
               SizedBox(height:30),
               Text('Audiobooks',
-                  style: TextStyle(color: Colors.white, fontSize: 16, letterSpacing: 1.0)),
+                  style: GoogleFonts.pacifico(color: Colors.white, fontSize: 36,)),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: row('rain', 'forest', 'sunset', 'ocean', context),
-              ),
-              SizedBox(height:100),
+                child: row('Atomic Habits', 'Declutter', 'Possibility', 'Hold Still', context),
+              ), 
+              SizedBox(height:50),
+
             ],
           ),
         )
@@ -174,6 +180,7 @@ class Background extends StatefulWidget {
   @override
   _BackgroundState createState() => _BackgroundState();
 }
+
 
 class _BackgroundState extends State<Background> {
   Timer timer;
