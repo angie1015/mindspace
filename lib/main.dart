@@ -13,7 +13,7 @@ void main() {
   runApp(MaterialApp(
     theme: ThemeData(fontFamily: 'Nunito'),
     debugShowCheckedModeBanner: false,
-    home: Preliminary(),
+    home: HomeRoute(),
   ));
 }
 
@@ -139,7 +139,7 @@ class _PlayRouteState extends State<PlayRoute> {
   playPause(sound) {
     if (initialPlay) {
       cache.play('audio/$sound.mp3');
-      playing = true;
+      playing = true; 
       initialPlay = false;
     }
     return IconButton(

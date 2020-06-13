@@ -149,6 +149,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+
   google_fonts:
     dependency: "direct main"
     description:
@@ -157,7 +158,7 @@ packages:
     source: hosted
     version: "1.1.0"
   http:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: http
       url: "https://pub.dartlang.org"
