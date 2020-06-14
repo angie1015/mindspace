@@ -52,57 +52,73 @@ class _JoinMeetingState extends State<JoinMeeting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
-        title: Text('Waiting Room'),
+        title: Text('Waiting Room', style: TextStyle(color: Colors.white,  fontSize: 22.0, letterSpacing: 3.0, fontWeight: FontWeight.w200),),
+        backgroundColor: Colors.blueGrey[800],
+
       ),
-      body: docReady? Container(
-        height: MediaQuery.of(context).size.height,
-        color: Colors.blue[100],
-        child: Center(
-          child: RaisedButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25.0),
-            ),
-            color: Colors.white,
-            padding: EdgeInsets.all(15.0),
-            elevation: 6,
-            onPressed: () async{
-              await _handleCameraAndMic();
-              //Fluttertoast.showToast(msg: '${widget.methodType}, $channelId,  $email',toastLength: Toast.LENGTH_LONG);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Meeting(
-                    channelId: channelId,
-                    channelName: 'test',
+      body: Container(
+    height: MediaQuery.of(context).size.height,
+    width: MediaQuery.of(context).size.width,
+    decoration: BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage('assets/images/bkgnd_2.jpg'),
+    fit: BoxFit.cover)),
+    child: docReady? Opacity(
+      opacity: .5,
+      child: Container(
+          height: MediaQuery.of(context).size.height,
+          color: Colors.blue[100],
+          child: Center(
+            child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Colors.white,
+              padding: EdgeInsets.all(15.0),
+              elevation: 6,
+              onPressed: () async{
+                await _handleCameraAndMic();
+                //Fluttertoast.showToast(msg: '${widget.methodType}, $channelId,  $email',toastLength: Toast.LENGTH_LONG);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Meeting(
+                      channelId: channelId,
+                      channelName: 'test',
+                    ),
                   ),
-                ),
-              );
-            },
-            child: Text('Join Meeting'),
+                );
+              },
+              child: Text('Join Meeting',
+                style: TextStyle(color: Colors.blue[900],fontSize: 20.0),),
+            ),
           ),
         ),
-      ):
-      Container(
-        color: Colors.blue[100],
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircularProgressIndicator(
-            ),
-            const SizedBox(height: 10.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 25),
-              child: Text("Waiting for doctor to start the session",style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18.0
-              ),),
-            )
-          ],
+    ):
+      Opacity(
+        opacity: .5,
+        child: Container(
+          color: Colors.blue[100],
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircularProgressIndicator(
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 25),
+                child: Text("Waiting for doctor to start the session",style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18.0
+                ),),
+              )
+            ],
+          ),
         ),
       ),
+    )
     );
 
   }
