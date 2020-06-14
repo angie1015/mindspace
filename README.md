@@ -21,15 +21,8 @@ The solution we present is MindSpace - an app to ensure mental well-being of cit
 A Nation restarts, only its citizens do. And that begins here, at MindSpace....
 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![1](https://github.com/angie1015/mindspace/blob/master/output/1.jpg)
+![2](https://github.com/angie1015/mindspace/blob/master/output/2.jpg)
+![3](https://github.com/angie1015/mindspace/blob/master/output/3.jpg)
+![4](https://github.com/angie1015/mindspace/blob/master/output/4.jpg)
+![5](https://github.com/angie1015/mindspace/blob/master/output/5.jpg)
