@@ -52,8 +52,10 @@ class _HomeRouteState extends State<HomeRoute> {
 
         setState(() {
           player.stop();
+          cache.clearCache();
           cache.play('audio/$sound.mp3');
           player.setVolume(.4);
+
          // if(playing==false) cache.play('audio/$sound.mp3');
           bg='${sound}_1';
         });
