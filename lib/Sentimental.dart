@@ -1,12 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'API.dart';
-import 'firebaseDB/firestoreDB.dart';
+import 'package:mindspace/AgoraFiles/JoinMeeting.dart';
 
 TextStyle question =  GoogleFonts.pacifico(color: Colors.white, letterSpacing: 2.0, fontSize: 26 );
 
@@ -27,25 +22,14 @@ class _SentimentalState extends State<Sentimental> {
   var ready = false;
   final databaseReference = Firestore.instance;
   final textController = TextEditingController();
-  var sentimentalSum=0.0;
-  var totalSum=0.0;
-  var disorderCollection;
-  var email;
 
   @override
   void initState() {
     super.initState();
     _getList();
-    loadSharedPref();
   }
 
-  void loadSharedPref() async{
-    final prefs = await SharedPreferences.getInstance();
-    var tempEmail = prefs.getString('email') ?? 'null';
-    if(tempEmail!='null') {
-      email = tempEmail;
-    }
-  }
+
 
 
   Future<void> _getList() async{
@@ -67,54 +51,13 @@ class _SentimentalState extends State<Sentimental> {
 
 
   void getSentimentalResult() async{
-    var tempSum =0;
-    for(int i=0;i<2;i++) {
-      var data = await getDataResult(
-          'http://alanta335.pythonanywhere.com/api?Query=' + result[i]);
-      var decodedData = jsonDecode(data);
-      var queryText = decodedData['Query'];
-      var resultSent = int.parse(queryText);
-      tempSum += resultSent;
-    }
-    tempSum -= 2;
-    tempSum *= -1;
-    sentimentalSum = tempSum/4.0;
-    totalSum = (widget.previousSum + sentimentalSum)/2.0;
-    print('total: $totalSum');
-    if (totalSum > 0.5 && totalSum <= 0.65) {
-      disorderCollection = "anxiety";
-    }
-
-    else if (totalSum > 0.65 && totalSum <= 0.8) {
-      disorderCollection = "depression";
-    }
-
-
-    else if (totalSum > 0.8 && totalSum <= 1) {
-      disorderCollection = "aggression";
-    }
-    if(totalSum > 0.5){
-      /*bool prime = await Navigator.push(
+    await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Severity(
-            disorder: disorderCollection,
-          ),
+          builder: (context) => JoinMeeting(),
         ),
-      ) ?? false;
-      if(prime == true){
+      );
 
-        Navigator.pop(context,true);
-      }*/
-    }
-    else{
-      FireStoreClass.pushResultDB(result: totalSum,email: email,normality: 'normal');
-      final prefs = await SharedPreferences.getInstance();
-      prefs.setBool('primaryAnalysis', true);
-      prefs.setString('question', 'sent');
-      prefs.setDouble('result', totalSum);
-      Navigator.pop(context,true);
-    }
   }
 
   int _index = 0;

@@ -23,25 +23,17 @@ class _JoinMeetingState extends State<JoinMeeting> {
   void initState() {
     super.initState();
     waitForConnection();
-    loadSharedPref();
+    //loadSharedPref();
   }
 
 
-  void loadSharedPref() async{
-    final prefs = await SharedPreferences.getInstance();
-    var tempEmail = prefs.getString('email') ?? 'null';
-    if(tempEmail!='null') {
-      setState(() {
-        email = tempEmail;
-      });
-    }
-  }
+
   void waitForConnection() {
-    _db.collection('appointment')
+    _db.collection('mindspace')
         .snapshots()
         .listen((result) {
       result.documents.forEach((result) {
-        if(result.data['email']==email && result.data['docReady']==true)
+        if(result.data['docReady']==true)
           setState(() {
             docReady = true;
             channelId = result.data['channelId'];
@@ -82,7 +74,6 @@ class _JoinMeetingState extends State<JoinMeeting> {
                 MaterialPageRoute(
                   builder: (context) => Meeting(
                     channelId: channelId,
-                    method: widget.methodType,
                     channelName: 'test',
                   ),
                 ),
