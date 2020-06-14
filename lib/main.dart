@@ -24,6 +24,14 @@ class HomeRoute extends StatefulWidget {
 }
 
 class _HomeRouteState extends State<HomeRoute> {
+
+  AudioPlayer player;
+  AudioCache cache;
+  bool initialPlay = true;
+  bool playing;
+
+
+
   row(s1, s2, s3, s4, context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -58,13 +66,25 @@ class _HomeRouteState extends State<HomeRoute> {
   @override
   void initState() {
     super.initState();
-    PlayRoute(sound: 'rain');
+    player = new AudioPlayer();
+    cache = new AudioCache(fixedPlayer: player);
+    homeScreenBackground();
   }
+
   @override
-  void dispose() {
-    // TODO: implement dispose
+  dispose() {
     super.dispose();
+    player.stop();
   }
+
+  void homeScreenBackground() {
+    cache.play('audio/rain.mp3');
+    playing = true;
+    initialPlay = false;
+
+  }
+  
+
 
   @override
   build(BuildContext context) {
