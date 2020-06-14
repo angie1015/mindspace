@@ -92,20 +92,25 @@ class HomeRoute extends StatelessWidget {
                 child: row('Atomic Habits', 'Declutter', 'Possibility', 'Hold Still', context),
               ), 
               SizedBox(height:50),
-
+              RaisedButton(
+                elevation: 5,
+                color: Colors.blueGrey,
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  onPressed:(){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Preliminary())
+                  );
+                  },
+                  child: Text("Tell us how you feel",
+                      style:
+                      //TextStyle(color: Colors.white, fontSize: 30, letterSpacing: 5.0, fontWeight: FontWeight.w600),
+                      GoogleFonts.pacifico(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w100)
+                  )
+              ),
+              SizedBox(height:50),
             ],
           ),
         )
       ),
-
-      /*body: Stack(
-        children: [
-          Positioned(top: 0, left: 0, child: Image.asset(img + 'bkgnd_2.jpg')),
-          Positioned(top: 115, width: width, child: Center(child: Text('SOLACE', style: title))),
-          Positioned(top: 250, width: width, child: Column(children: [row('rain', 'forest', context), row('sunset', 'ocean', context)],)
-          ),
-        ],
-      ),*/
     );
   }
 }
