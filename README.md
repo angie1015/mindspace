@@ -14,7 +14,7 @@ If ignored (as mental health issues normally are), the post-COVID landscape will
 
 The solution we present is MindSpace - an app to ensure mental well-being of citizens amidst the pandemic,that promises to keep them positive, stress-free and peaceful using soothing music, meditation podcasts and audiobooks all with the feel of mother Nature’s healing touch in forests, oceans and much more.We also track users’ mood and behavior changes through interactive surveys to which use sentimental analysis through Natural Language Processing to assess their mental health and set appointments with doctors according to severity.
 
-A Nation restarts, only its citizens do.And that begins here, at MindSpace....
+A Nation restarts, only its citizens do. And that begins here, at MindSpace....
 
 
 ## Getting Started
