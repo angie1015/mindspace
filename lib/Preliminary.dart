@@ -67,7 +67,7 @@ class PreliminaryState extends State<Preliminary> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Preliminary',
-        style: TextStyle(color: Colors.white,  fontSize: 24.0, letterSpacing: 5.0, fontWeight: FontWeight.w200),), backgroundColor: Colors.blueGrey[800],),
+        style: TextStyle(color: Colors.white,  fontSize: 22.0, letterSpacing: 3.0, fontWeight: FontWeight.w200),), backgroundColor: Colors.blueGrey[800],),
         backgroundColor: Colors.blueGrey,
         // Wait until the controller is initialized before displaying the
         // camera preview. Use a FutureBuilder to display a loading spinner

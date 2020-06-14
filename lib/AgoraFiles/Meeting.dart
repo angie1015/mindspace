@@ -182,7 +182,8 @@ class _MeetingState extends State<Meeting> {
             ));
       default:
     }
-    return Container();
+    return Opacity(
+        opacity: .5,child: Container());
   }
 
   /// Toolbar layout
@@ -253,7 +254,8 @@ class _MeetingState extends State<Meeting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agora Flutter QuickStart'),
+        title: Text('Mindspace Meeting', style: TextStyle(color: Colors.white,  fontSize: 22.0, letterSpacing: 3.0, fontWeight: FontWeight.w200),),
+        backgroundColor: Colors.blueGrey[800],
       ),
       backgroundColor: Colors.black,
       body: Center(
