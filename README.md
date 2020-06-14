@@ -3,6 +3,7 @@
 Inhale Peace. Exhale Stress.
 
 [![](http://img.youtube.com/vi/7BS_7n7TT-Y/0.jpg)](http://www.youtube.com/watch?v=7BS_7n7TT-Y "")
+(Click on the image to watch the Youtube video)
 
 # The problem MindSpace solves
 “Covid -19: India is staring at a mental health crisis”- Hindustan Times
