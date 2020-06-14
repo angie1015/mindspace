@@ -30,7 +30,45 @@ class _HomeRouteState extends State<HomeRoute> {
   bool initialPlay = true;
   bool playing;
 
+  natureSounds(s1, s2, s3, s4, context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(width: 10),
+        soundBtnBg(s1, context),
+        SizedBox(width: 10),
+        soundBtnBg(s2, context),
+        SizedBox(width: 10),
+        soundBtnBg(s3, context),
+        SizedBox(width: 10),
+        soundBtnBg(s4, context),
+        SizedBox(width: 10),],
+    );
+  }
 
+  soundBtnBg(sound, context) {
+    return GestureDetector(
+      onTap: () {
+
+        setState(() {
+          player.stop();
+          cache.play('audio/$sound.mp3');
+         // if(playing==false) cache.play('audio/$sound.mp3');
+          bg='${sound}_1';
+        });
+      },
+      child: Column(
+        children: [
+
+          Image.asset('assets/icons/$sound.png',
+            height: 50,
+            width: 40,
+          ),
+          //Text(sound.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1.0))
+        ],
+      ),
+    );
+  }
 
   row(s1, s2, s3, s4, context) {
     return Row(
@@ -50,7 +88,10 @@ class _HomeRouteState extends State<HomeRoute> {
 
   soundBtn(sound, context) {
     return GestureDetector(
-      onTap: () { Navigator.push(context, MaterialPageRoute(builder: (context) => PlayRoute(sound: sound))); },
+      onTap: () {
+
+        player.stop();
+        Navigator.push(context, MaterialPageRoute(builder: (context) => PlayRoute(sound: sound))); },
       child: Column(
         children: [
           Image.asset('assets/icons/$sound.png',
@@ -68,7 +109,8 @@ class _HomeRouteState extends State<HomeRoute> {
     super.initState();
     player = new AudioPlayer();
     cache = new AudioCache(fixedPlayer: player);
-    homeScreenBackground();
+    //cache.play('audio/$sound1.mp3');
+    //homeScreenBackground();
   }
 
   @override
@@ -76,15 +118,15 @@ class _HomeRouteState extends State<HomeRoute> {
     super.dispose();
     player.stop();
   }
-
+String sound1 = 'sunset';
   void homeScreenBackground() {
-    cache.play('audio/rain.mp3');
+
     playing = true;
     initialPlay = false;
 
   }
   
-
+String bg='bkgnd_1';
 
   @override
   build(BuildContext context) {
@@ -95,13 +137,15 @@ class _HomeRouteState extends State<HomeRoute> {
         width: width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/bkgnd_2.jpg'), fit: BoxFit.cover)),
+                image: AssetImage('assets/images/$bg.jpg'), fit: BoxFit.cover)),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height:720),
+              SizedBox(height:40),
+              natureSounds('rain', 'forest', 'sunset', 'ocean', context),
+              SizedBox(height:680),
 
               Text('MINDSPACE', style: title),
 
