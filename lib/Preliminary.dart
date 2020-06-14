@@ -14,8 +14,8 @@ class Preliminary extends StatefulWidget {
 }
 
 class PreliminaryState extends State<Preliminary> {
-  String predictURL = "http://replica-alpha.herokuapp.com/predict";
-  Future<void> _initializeControllerFuture;
+  //String predictURL = "http://replica-alpha.herokuapp.com/predict";
+  //Future<void> _initializeControllerFuture;
   int _radioMCQ = 0;
   var result = new List(6);
   var count = 0;
@@ -23,8 +23,7 @@ class PreliminaryState extends State<Preliminary> {
   var list = [];
   var sumResult = 0.0;
   bool ready = false;
-  bool primaryAnalysis = false;
-  var data;
+  
 
   @override
   void initState() {
@@ -33,13 +32,10 @@ class PreliminaryState extends State<Preliminary> {
     // create a CameraController.
 
     _getList();
-    loadSharedPref();
+    //loadSharedPref();
   }
 
-  Future<void> loadSharedPref() async {
-    final prefs = await SharedPreferences.getInstance();
-    primaryAnalysis = prefs.getBool('primaryAnalysis') ?? false;
-  }
+
 
   Future<void> _getList() async {
     count = 0;
@@ -231,34 +227,24 @@ class PreliminaryState extends State<Preliminary> {
                                                     fontSize: 20.0),
                                               ),
                                               onPressed: () async {
-                                                for (int i = 0; i < 6; i++) {
-                                                  sumResult += result[i];
-                                                }
-                                                sumResult /= 42.0;
-                                                print('akchy');
                                                 //http.Response response = await http.get(predictURL);
                                                 //data = response.body;
                                                 //print('xperion $data');
                                                 //var decodedData = jsonDecode(data);
                                                 //print( '${decodedData['Query']} mxyzptlk');
 
-                                                bool primeAnalysis =
-                                                    await Navigator.push(
+                                                await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
                                                             builder:
                                                                 (context) =>
                                                                     Sentimental(
-                                                              previousSum:
-                                                                  sumResult,
+
                                                             ),
                                                           ),
-                                                        ) ??
-                                                        false;
+                                                        );
 
-                                                if (primeAnalysis == true) {
-                                                  Navigator.pop(context, true);
-                                                }
+
                                               },
                                             ),
                                           ),

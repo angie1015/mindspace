@@ -8,10 +8,9 @@ class Meeting extends StatefulWidget {
   /// non-modifiable channel name of the page
   final String channelName;
   final int channelId;
-  final method;
 
   /// Creates a call page with given channel name.
-  const Meeting({Key key, this.channelName, this.channelId,this.method}) : super(key: key);
+  const Meeting({Key key, this.channelName, this.channelId}) : super(key: key);
 
   @override
   _MeetingState createState() => _MeetingState();
@@ -62,12 +61,10 @@ class _MeetingState extends State<Meeting> {
   Future<void> _initAgoraRtcEngine() async {
     await AgoraRtcEngine.create(APP_ID);
     await AgoraRtcEngine.enableVideo();
-    if(widget.method=='audio') {
-      await AgoraRtcEngine.enableLocalVideo(false);
-    }
-    else{
-      await AgoraRtcEngine.enableLocalVideo(true);
-    }
+
+
+    await AgoraRtcEngine.enableLocalVideo(true);
+
   }
 
   /// Add agora event handlers
@@ -220,7 +217,7 @@ class _MeetingState extends State<Meeting> {
             fillColor: Colors.redAccent,
             padding: const EdgeInsets.all(15.0),
           ),
-          widget.method=='audio'? SizedBox(height: 0,):RawMaterialButton(
+          RawMaterialButton(
             onPressed: _onSwitchCamera,
             child: Icon(
               Icons.switch_camera,
