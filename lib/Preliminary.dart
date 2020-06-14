@@ -275,12 +275,14 @@ class PreliminaryState extends State<Preliminary> {
                   ),
                 )
               : Container(
-                  color: Colors.blue[100],
+                  color: Colors.blueGrey[200],
                   width: double.infinity,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircularProgressIndicator(),
+                      CircularProgressIndicator(
+                        backgroundColor: Colors.blueGrey[500],
+                      ),
                       const SizedBox(height: 10.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(
@@ -290,7 +292,7 @@ class PreliminaryState extends State<Preliminary> {
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontSize: 18.0),
+                              fontSize: 24.0),
                         ),
                       )
                     ],
