@@ -17,7 +17,13 @@ void main() {
   ));
 }
 
-class HomeRoute extends StatelessWidget {
+class HomeRoute extends StatefulWidget {
+
+  @override
+  _HomeRouteState createState() => _HomeRouteState();
+}
+
+class _HomeRouteState extends State<HomeRoute> {
   row(s1, s2, s3, s4, context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -47,6 +53,17 @@ class HomeRoute extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    PlayRoute(sound: 'rain');
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -90,7 +107,7 @@ class HomeRoute extends StatelessWidget {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: row('Atomic Habits', 'Declutter', 'Possibility', 'Hold Still', context),
-              ), 
+              ),
               SizedBox(height:50),
               RaisedButton(
                 elevation: 5,
