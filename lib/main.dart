@@ -53,6 +53,7 @@ class _HomeRouteState extends State<HomeRoute> {
         setState(() {
           player.stop();
           cache.play('audio/$sound.mp3');
+          player.setVolume(.4);
          // if(playing==false) cache.play('audio/$sound.mp3');
           bg='${sound}_1';
         });
@@ -173,19 +174,22 @@ String bg='bkgnd_1';
                 child: row('Atomic Habits', 'Declutter', 'Possibility', 'Hold Still', context),
               ),
               SizedBox(height:50),
-              RaisedButton(
-                elevation: 5,
-                color: Colors.blueGrey,
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  onPressed:(){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Preliminary())
-                  );
-                  },
-                  child: Text("Tell us how you feel",
-                      style:
-                      //TextStyle(color: Colors.white, fontSize: 30, letterSpacing: 5.0, fontWeight: FontWeight.w600),
-                      GoogleFonts.pacifico(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w100)
-                  )
+              Opacity(
+                opacity: .6,
+                child: RaisedButton(
+                  elevation: 5,
+                  color: Colors.blueGrey,
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    onPressed:(){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Preliminary())
+                    );
+                    },
+                    child: Text("Tell us how you feel",
+                        style:
+                        //TextStyle(color: Colors.white, fontSize: 30, letterSpacing: 5.0, fontWeight: FontWeight.w600),
+                        GoogleFonts.pacifico(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w100)
+                    )
+                ),
               ),
               SizedBox(height:50),
             ],

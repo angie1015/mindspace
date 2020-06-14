@@ -65,7 +65,7 @@ class _SentimentalState extends State<Sentimental> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Sentimental',
-        style: TextStyle(color: Colors.white,  fontSize: 22.0, letterSpacing: 3.0, fontWeight: FontWeight.w200),),
+        style:  TextStyle(color: Colors.white,  fontSize: 22.0, letterSpacing: 3.0, fontWeight: FontWeight.w200),),
       backgroundColor: Colors.blueGrey[800],),
       body: Container(
     height: MediaQuery.of(context).size.height,
